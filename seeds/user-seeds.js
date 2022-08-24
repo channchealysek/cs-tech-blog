@@ -3,7 +3,7 @@ const { User } = require('../models');
 const userdata =
 [
   {
-    "username": "Can U",
+    "username": "Can",
     "email": 'bb@gmail.com',
     "password": "12345678"
   },

@@ -5,18 +5,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Ghibli">
-  <title>Home | Tech Blog</title>
+  <title>Tech Blog</title>
   <link href="/images/favicon.ico" rel="shortcut icon">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body class="flex-column min-100-vh">
+
   <nav class="navbar">
     <ul>
+      {{#if loggedIn}}
       <li class="li-inline nav-item"><a href="/">Home</a></li>
+      <li class="li-inline nav-item"><a href="/dashboard">dashboard</a></li>
+      <button id="logout" class="btn-no-style">logout</button>
+      {{else}}
+      <li class="li-inline nav-item"><a href="/">Home</a></li>
+      <li class="li-inline nav-item"><a href="/login">login</a></li>
+      {{/if}}
     </ul>
   </nav>
+
   <div class="wrapper">
     <header class="hero">
       <h1>
@@ -30,6 +39,8 @@
     &copy; Tech Blog
   </footer>
   </div>
-
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
 </body>
 </html>
