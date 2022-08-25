@@ -32,6 +32,9 @@
         <h1 class="app-title"><a href="/">The Tech Blog</a></h1>
       </h1>
     </header>
+    {{#if loggedIn}}
+      <p>Hi, {{ Posts.user }}</p>
+    {{/if}}
     <main class="col-auto">
       {{{ body }}}
     </main>

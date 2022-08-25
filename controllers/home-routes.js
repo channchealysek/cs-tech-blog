@@ -40,9 +40,22 @@ router.get('/post/:id', async (req, res) => {
     }
   });
 
-  // giving you the login and signup route pieces below, no changes needed.
+// giving you the login and signup route pieces below, no changes needed.
 router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
   res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('signup');
 });
 
 module.exports = router;
