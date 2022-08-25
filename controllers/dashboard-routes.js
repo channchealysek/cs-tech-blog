@@ -13,7 +13,6 @@ router.get("/", withAuth, async (req, res) => {
       }],
     });
     const posts = postData.map(post => post.get({ plain: true }));
-    console.log(posts)
     res.render("user-posts", {
       layout: "dashboard",
       posts,
@@ -23,6 +22,13 @@ router.get("/", withAuth, async (req, res) => {
   } catch (err) {
     res.redirect("login");
   }
+});
+
+// when click on new post
+router.get('/newpost', withAuth, (req, res) => {
+  res.render('new-post', {
+    layout: 'dashboard',
+  });
 });
 
 module.exports = router;

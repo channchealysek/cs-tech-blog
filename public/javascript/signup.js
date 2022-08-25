@@ -15,6 +15,7 @@ const signupFormHandler = async function (event) {
   });
 
   if (response.ok) {
+    // will return homepage when login successfully
     document.location.replace("/");
   } else {
     alert("Failed to sign up");
