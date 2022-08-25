@@ -1,0 +1,17 @@
+<div class="col-auto">
+  <span><h1>Welcome! {{ username }}</h1></span>
+  </div>
+</div>
+<br>
+{{#if posts.length}}
+<div class="card flex-column">
+  {{#each posts as |post|}}
+  <div class="card-body">
+      <div class="card-header flex-row justify-space-between">
+        <div class="col-8">Post Title: {{postTitle}}</div>
+        <div class="col-4">posted by {{user.username}} on {{dateCreated}}</div>
+      </div>  
+  </div>
+  {{/each}}
+</div>
+{{/if}}
