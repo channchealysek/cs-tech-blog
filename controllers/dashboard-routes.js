@@ -24,11 +24,31 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-// when click on new post
+// load new create form for new post when click create new
 router.get('/newpost', withAuth, (req, res) => {
   res.render('new-post', {
     layout: 'dashboard',
   });
+});
+
+// it will load to edit form when click on post itself.
+router.get('/edit/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
+
+    if (postData) {
+      const post = postData.get({ plain: true });
+      console.log(post);
+      res.render('edit-post', {
+        layout: 'dashboard',
+        post,
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.redirect('login');
+  }
 });
 
 module.exports = router;
