@@ -7,7 +7,9 @@ router.post("/", withAuth, async (req, res) => {
   const body = req.body;
   try {
     const newPost = await Post.create({ ...body, user_id: req.session.user_id });
-    res.json(newPost);
+    if (newPost) {
+      res.status(200).end();
+    }
 
   } catch (err) {
     res.status(500).json(err);
