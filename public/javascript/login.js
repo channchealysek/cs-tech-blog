@@ -16,7 +16,7 @@ async function loginFormHandler(event) {
 
     if (response.ok) {
       // will return homepage when login successfully
-      document.location.replace('/');
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }

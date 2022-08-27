@@ -10,14 +10,8 @@ router.post('/', async (req, res) => {
       password: req.body.password
     });
 
-    req.session.save(() => {
-      req.session.user_id = newUser.id;
-      req.session.username = newUser.username;
-      req.session.email = newUser.email;
-      req.session.loggedIn = true;
+    res.redirect("/login");
 
-      res.json(newUser);
-    });
   } catch (err) {
     res.status(500).json(err);
   }

@@ -19,12 +19,7 @@ const editFormHandler = async (event) => {
       "Content-Type": "application/json",
     },
   });
-
-  if (response.ok) {
-    document.location.replace("/dashboard");
-  } else {
-    alert("Failed to update your post");
-  }
+  
   document.location.replace("/dashboard");
 };
 
