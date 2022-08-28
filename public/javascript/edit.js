@@ -1,4 +1,4 @@
-const postId = document.querySelector('input[name="post-id"]').value;
+const post_id = document.querySelector('input[name="post-id"]').value;
 
 const editFormHandler = async (event) => {
   event.preventDefault();
@@ -9,7 +9,7 @@ const editFormHandler = async (event) => {
   ).value;
 
   // edit post
-  const response = await fetch(`/api/post/${postId}`, {
+  const response = await fetch(`/api/post/${post_id}`, {
     method: "PUT",
     body: JSON.stringify({
       postTitle,
@@ -25,7 +25,7 @@ const editFormHandler = async (event) => {
 
 // delete post
 const deleteClickHandler = async () => {
-  await fetch(`/api/post/${postId}`, {
+  await fetch(`/api/post/${post_id}`, {
     method: "DELETE",
   });
 

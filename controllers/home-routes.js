@@ -9,6 +9,13 @@ router.get("/", async (req, res) => {
     const postData = await Post.findAll({
       include: [
         {
+          model: Comment,
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
+        },
+        {
           model: User,
           attributes: ["username"],
         },
@@ -37,7 +44,18 @@ router.get("/post/:id", async (req, res) => {
 
     if (postData) {
       const post = postData.get({ plain: true });
-      res.render("single-post", { post, loggedIn: req.session.loggedIn });
+      if (post.user.id === req.session.user_id) {
+        res.render("user-single-post", {
+          post,
+          loggedIn: req.session.loggedIn,
+        });
+      } else {
+        res.render("single-post", { 
+          post, 
+          loggedIn: req.session.loggedIn, 
+        });
+      }
+
     } else {
       res.status(404).end();
     }
