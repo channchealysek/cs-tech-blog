@@ -546,7 +546,11 @@ input {
   font-size: 17px;
 }
 
-.comment-text {
-  margin-top: 5px;
+.comment-text { 
   font-size: 17px;
+}
+
+.commentCounts {
+  text-align: right;
+  padding-right: 10px;
 }

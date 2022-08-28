@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, User } = require("../models/");
+const { Post, User, Comment } = require("../models/");
 const withAuth = require("../utils/auth");
 
 // get all posts
@@ -8,6 +8,13 @@ router.get("/", withAuth, async (req, res) => {
     const postData = await Post.findAll({
       where: { user_id: req.session.user_id },
       include: [
+        {
+          model: Comment,
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
         {
           model: User,
           attributes: ["username"],
@@ -39,8 +46,26 @@ router.get("/edit/:id", withAuth, async (req, res) => {
 
     if (postData) {
       const post = postData.get({ plain: true });
-      console.log(post);
       res.render("edit-post", {
+        layout: "dashboard",
+        post,
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.redirect("login");
+  }
+});
+
+// comment will load to edit form when click on post itself.
+router.get("/comment/:id", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
+
+    if (postData) {
+      const post = postData.get({ plain: true });
+      res.render("edit-comment", {
         layout: "dashboard",
         post,
       });

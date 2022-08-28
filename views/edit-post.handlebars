@@ -11,12 +11,11 @@
       <label class="form-label">Content:</label>
       <textarea class="form-textarea form-input" name="post-body" data-number="8">{{post.postContent}}</textarea>
     </div>
- 
-    <button class="btn btn-primary" type="submit">EDIT</button>
+    <div class="card-body">
+      <button class="btn btn-primary" type="submit">Update Post</button>
+      <button class="btn btn-primary" type="click" id="delete-btn">Delete</button> 
+    </div> 
     <input type="hidden" name="post-id" value="{{post.id}}"/>
   </form>
-  <div class="card-body">
-   <button class="btn btn-primary" type="click" id="delete-btn">DELETE</button>
-  </div> 
 </div>
 <script src="/javascript/edit.js"></script>
