@@ -20,7 +20,7 @@ const editFormHandler = async (event) => {
     },
   });
   
-  document.location.replace("/dashboard");
+  document.location.replace(`/post/${post_id}`);
 };
 
 // delete post
