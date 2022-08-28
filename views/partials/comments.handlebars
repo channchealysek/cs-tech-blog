@@ -3,7 +3,7 @@
   {{#each this}}
     <section class="comment" name="comment-{{id}}">
       <div class="meta">
-        <h3>{{user.username}}<span> on {{date_created}}</span></h3>
+        <h3>{{user.username}}<span> on {{format_date date_created}}</span></h3>
       </div>
       <div class="comment-text">
         {{comment_text}}

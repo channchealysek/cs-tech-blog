@@ -5,13 +5,13 @@
         <div class="col-8">{{postTitle}}</div>
       </a>
     </h2>
-    <div class="col-4">posted by {{user.username}} on {{dateCreated}}
+    <div class="col-4">posted by {{user.username}} on {{format_date dateCreated}}
     </div>
   </div>  
   <p class="card-body">
    {{postContent}}
   </p>
     <div class="commentCounts">
-      Command {{comments.length}}
+      Command {{comments.length}} 
     </div>
 </div>
