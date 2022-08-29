@@ -19,16 +19,17 @@ router.post("/", withAuth, async (req, res) => {
 // edit post
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const [affectedRows] = await Post.update(req.body, {
+    const dbPostData = await Post.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
 
-    if (affectedRows > 0) {
-      res.status(200).end();
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No post found with this id' });
+      return;
     } else {
-      res.status(404).end();
+      res.json(dbPostData);
     }
   } catch (err) {
     res.status(500).json(err);
@@ -38,16 +39,17 @@ router.put('/:id', withAuth, async (req, res) => {
 // delete post
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const [affectedRows] = Post.destroy({
+    const dbPostData  = Post.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (affectedRows > 0) {
-      res.status(200).end();
+    if (!dbPostData ) {
+      res.status(404).json({ message: 'No post found with this id' });
+      return;
     } else {
-      res.status(404).end();
+      res.json(dbPostData);
     }
   } catch (err) {
     res.status(500).json(err);

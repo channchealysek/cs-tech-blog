@@ -1,7 +1,6 @@
 const comment_id = document.querySelector('input[name="comment_id"]').value;
 const post_id = document.querySelector('input[name="post_id"]').value;
 
-// update comment
 const editFormHandler = async (event) => {
   event.preventDefault();
 
@@ -18,18 +17,28 @@ const editFormHandler = async (event) => {
     headers: {
       "Content-Type": "application/json",
     },
-  });
-  
-  document.location.replace(`/post/${post_id}`);
+  }).then(async(response) => {
+    if (response.ok) {
+      document.location.replace(`/post/${post_id}`);
+    }
+    else {
+      throw new Error(response.status + " Failed Fetch ");
+    }
+  }).catch(e => console.error('EXCEPTION: ', e))
 };
 
 // delete comment
 const deleteClickHandler = async () => {
-  await fetch(`/api/comments/${comment_id}`, {
+  const response = await fetch(`/api/comments/${comment_id}`, {
     method: "DELETE",
+    headers: {"Content-Type":"application/json"}
   });
 
-  document.location.replace(`/post/${post_id}`);
+  if (response.ok) {
+    document.location.replace(`/post/${post_id}`);
+  } else {
+    alert(response.statusText);
+  } 
 };
 
 document

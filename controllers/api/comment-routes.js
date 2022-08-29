@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Comment } = require("../../models/");
-const withAuth = require("../../utils/auth");
+const withAuth = require("../../utils/auth.js");
 
 // create a new comment
 router.post("/", withAuth, async (req, res) => {
@@ -20,20 +20,22 @@ router.post("/", withAuth, async (req, res) => {
 // edit post comment
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const [affectedRows] = await Comment.update(req.body, {
+    const dbPostData = await Comment.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
 
-    if (affectedRows > 0) {
-      res.status(200).end();
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No post found with this id' });
+      return;
     } else {
-      res.status(404).end();
+      res.json(dbPostData);
     }
   } catch (err) {
     res.status(500).json(err);
   }
+
 });
 
 // delete comment
