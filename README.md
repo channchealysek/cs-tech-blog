@@ -6,7 +6,7 @@
  `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
   
 ## Description 
-The application for blog site which build with Node.js, Express,dotenv, sequelize handlebars and MySQL2
+The application for blog site which allow user to register and sigup. it's build with Node.js, Express,dotenv, sequelize handlebars and MySQL2. Tech blog allow user to post thier content and make comment with other posts by logning into their account only, and edit, delete account too.
 
 ## Table of Contents
 1. [Installation](#Installation)
