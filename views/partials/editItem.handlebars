@@ -1,6 +1,6 @@
 
 <div class="card-body">
-  <a href="dashboard/edit/{{id}}">
+  <a href="/post/{{id}}">
     <div class="card-header flex-row justify-space-between">
       <div class="col-8">Post Title: {{postTitle}}</div>
       <div class="col-4">posted by {{user.username}} on {{format_date dateCreated}}</div>
@@ -8,5 +8,8 @@
   </a>
   <div class="commentCounts">
     <a href="/post/{{id}}">Comments {{comments.length}}</a>
+  </div>
+  <div>
+    <div><a href="/post/{{id}}" class="btn-fa">View</a><a href="dashboard/edit/{{id}}" class="btn-fa">Edit</a></div>
   </div>
 </div>

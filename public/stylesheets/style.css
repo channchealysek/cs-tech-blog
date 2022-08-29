@@ -555,3 +555,29 @@ input {
   text-align: right;
   padding-right: 10px;
 }
+
+.btn-fa {
+  margin: 3px;
+  padding: 5px;
+  border: 1px #c7c3c2 solid;
+  background: #6f6866;
+  color: whitesmoke;
+}
+
+.btn-fa:hover {
+  border: 1px #faf8f7 solid;
+  color: rgb(236, 217, 185);
+  background: #8f8784;
+  font-size: 18px;
+}
+
+.btn-back {
+  width: 250px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.btn-back:hover {
+  color: white;
+  font-size: 18px;
+}
