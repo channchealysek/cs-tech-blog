@@ -12,7 +12,7 @@ class Post extends Model {}
       autoIncrement: true,
     },
     postTitle: {
-      type: DataTypes.STRING(25),
+      type: DataTypes.STRING(200),
       allowNull: false,
       unique: true,
     },
