@@ -59,15 +59,15 @@ router.get("/edit/:id", withAuth, async (req, res) => {
 });
 
 // comment will load to edit form when click on post itself.
-router.get("/comment/:id", withAuth, async (req, res) => {
+router.get("/comment/edit/:id", withAuth, async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id);
+    const commentData = await Comment.findByPk(req.params.id);
 
-    if (postData) {
-      const post = postData.get({ plain: true });
+    if (commentData) {
+      const comment = commentData.get({ plain: true });
       res.render("edit-comment", {
         layout: "dashboard",
-        post,
+        comment,
       });
     } else {
       res.status(404).end();

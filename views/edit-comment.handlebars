@@ -1,0 +1,17 @@
+
+<div class="card">
+  <h2 class="card-header">Edit Comment</h2>
+  <form class="card-body" id="edit-comment-form">
+    <div>
+      <label class="form-label">Content:</label>
+      <textarea class="form-textarea form-input" name="comment-body" data-number="8">{{comment.comment_text}}</textarea>
+    </div>
+    <div class="card-body">
+      <button class="btn btn-primary" type="submit">Update Comment</button>
+      <button class="btn btn-primary" type="click" id="delete-btn">Delete</button> 
+    </div> 
+    <input type="hidden" name="comment_id" value="{{comment.id}}"/>
+    <input type="hidden" name="post_id" value="{{comment.post_id}}"/>
+  </form>
+</div>
+<script src="/javascript/comment-edit.js"></script>
